@@ -3,168 +3,378 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jody Hunter Phillips</title>
+  <title>Jody H. Phillips</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --teal-dark:  #0891b2;
+      --teal-light: #06b6d4;
+      --teal-pale:  #e0f7fa;
+      --slate:      #1e293b;
+      --slate-mid:  #334155;
+      --slate-light:#64748b;
+      --white:      #ffffff;
+      --off-white:  #f8fafc;
+      --border:     #e2e8f0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f7;
-      color: #333;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--slate);
+      overflow-x: hidden;
     }
+
+    /* ── HEADER ── */
     header {
-      background: linear-gradient(to right, #000, #333);
-      color: #fff;
+      background: linear-gradient(135deg, var(--slate) 0%, var(--slate-mid) 100%);
+      color: var(--white);
+      padding: 80px 40px 60px;
       text-align: center;
-      padding: 50px 20px;
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(8,145,178,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal-dark), var(--teal-light), var(--teal-dark));
+    }
+
+    .header-inner { position: relative; z-index: 1; }
+
     header h1 {
-      font-size: 3rem;
-      margin: 0;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
     }
-    header p {
-      margin: 10px 0 0;
-      font-size: 1.2rem;
+
+    header h1 span {
+      color: var(--teal-light);
     }
+
+    .header-tag {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── NAV ── */
     nav {
-      text-align: center;
-      padding: 20px 0;
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.07);
     }
+
     nav a {
-      margin: 0 15px;
+      display: inline-block;
+      padding: 18px 28px;
       text-decoration: none;
-      color: #007aff;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      color: var(--slate-light);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
     }
+
     nav a:hover {
-      color: #0056cc;
+      color: var(--teal-dark);
+      border-bottom-color: var(--teal-dark);
     }
+
+    /* ── SECTIONS ── */
     .section {
       position: relative;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      color: #fff;
-      text-align: center;
     }
-    .section:nth-child(even) .content {
-      margin-left: auto;
-      margin-right: 0;
-      text-align: right;
-    }
-    .section:nth-child(odd) .content {
-      margin-right: auto;
-      margin-left: 0;
-      text-align: left;
-    }
+
     .section video {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -1;
+      z-index: 0;
     }
+
+    .section-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(8,100,140,0.88) 100%);
+      z-index: 1;
+    }
+
     .content {
       position: relative;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 8px;
-      width: 60%;
-      max-width: 800px;
+      z-index: 2;
+      max-width: 760px;
+      width: 90%;
+      padding: 48px;
+      background: rgba(15,23,42,0.72);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      color: var(--white);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
     }
-    .content h2 {
-      font-size: 2rem;
+
+    /* alternating alignment */
+    .section:nth-child(even) { justify-content: flex-end; padding-right: 6vw; }
+    .section:nth-child(odd)  { justify-content: flex-start; padding-left: 6vw; }
+
+    .content-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      border: 1px solid rgba(6,182,212,0.4);
+      border-radius: 999px;
+      padding: 4px 14px;
       margin-bottom: 20px;
     }
+
+    .content h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
     .content p {
-      font-size: 1.2rem;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.95);
     }
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background-color: #000;
-      color: #fff;
-      margin-top: 40px;
-    }
-    footer a {
-      color: #007aff;
+
+    .content strong { color: var(--teal-light); font-weight: 600; }
+
+    .content a {
+      color: var(--teal-light);
       text-decoration: none;
-      transition: color 0.3s ease;
+      border-bottom: 1px solid rgba(6,182,212,0.4);
+      transition: border-color 0.2s;
     }
-    footer a:hover {
-      color: #00c6ff;
+    .content a:hover { border-bottom-color: var(--teal-light); }
+
+    /* ── PILL TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: #065a6e;
+      border: 1px solid #0891b2;
+      color: #bef0fb;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--slate);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 48px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--teal-light);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    .footer-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal-dark), var(--teal-light));
+      margin: 0 auto 20px;
+      border-radius: 2px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .section:nth-child(even),
+      .section:nth-child(odd) {
+        justify-content: center;
+        padding: 0 20px;
+      }
+      .content { padding: 32px 24px; }
+      nav a { padding: 14px 14px; font-size: 0.75rem; }
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .content {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .section video {
+        display: none;
+      }
+      .section {
+        background: var(--slate);
+      }
+    }
+
+    /* ── SCROLL FADE IN ── */
+    .js-ready .content {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .js-ready .content.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Jody H. Phillips</h1>
-    <p>Creative Visionary | eLearning Innovator | Storyteller</p>
+    <div class="header-inner">
+      <h1>Jody <span>H.</span> Phillips</h1>
+      <p class="header-tag">eLearning Innovator &nbsp;·&nbsp; Creative Technologist &nbsp;·&nbsp; Storyteller</p>
+    </div>
   </header>
+
   <nav>
-    <a href="#about">About Me</a>
+    <a href="#about">About</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#elearning">eLearning</a>
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- ABOUT -->
   <div id="about" class="section">
-    <video src="GoGetItNow.mp4" autoplay muted loop playsinline poster></video>
+    <video src="GoGetItNow.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
     <div class="content">
-      <h2>About Me</h2>
+      <span class="content-label">About Me</span>
+      <h2>Building learning — and better ways to build it.</h2>
       <p>
-        I'm Jody H. Phillips, a creative force specializing in storytelling, multimedia, and eLearning.
-        I bring ideas to life using cutting-edge tools, blending creativity with technology to inspire and educate.
+        I'm Jody H. Phillips, a creative technologist specializing in eLearning, storytelling, and multimedia. 
+        With 20+ years of experience, I blend instructional design expertise with hands-on front-end development 
+        to produce learning experiences that actually work — for global teams, at scale.
       </p>
+      <div class="tags">
+        <span class="tag">Instructional Design</span>
+        <span class="tag">HTML / CSS / JS</span>
+        <span class="tag">SCORM 2004</span>
+        <span class="tag">AI-Assisted Workflows</span>
+        <span class="tag">Articulate Rise & Storyline</span>
+      </div>
     </div>
   </div>
 
+  <!-- PORTFOLIO -->
   <div id="portfolio" class="section">
-    <video src="BountyBlaster2.mp4" autoplay muted loop playsinline poster></video>
+    <video src="BountyBlaster2.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
     <div class="content">
-      <h2>Portfolio</h2>
+      <span class="content-label">Portfolio</span>
+      <h2>Where creativity meets technology.</h2>
       <p>
-        Explore my work, including AI-driven projects like <strong>'The Next Canvas'</strong>, interactive scenarios, and 
-        dynamic marketing content that captivates audiences on platforms like TikTok and YouTube.
+        Explore AI-driven projects like <strong>The Next Canvas</strong>, interactive scenario-based courses, 
+        dynamic multimedia content, and custom-built eLearning tools — all designed to captivate audiences 
+        and move the needle on real behavior change.
       </p>
+      <div class="tags">
+        <span class="tag">AI-Driven Projects</span>
+        <span class="tag">Interactive Scenarios</span>
+        <span class="tag">Multimedia Content</span>
+        <span class="tag">Custom Interactions</span>
+      </div>
     </div>
   </div>
 
+  <!-- ELEARNING -->
   <div id="elearning" class="section">
-    <video src="../elearning-background.mp4" autoplay muted loop playsinline poster></video>
+    <video src="../elearning-background.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
     <div class="content">
-      <h2>eLearning</h2>
+      <span class="content-label">eLearning</span>
+      <h2>Learning that respects the learner.</h2>
       <p>
-        I specialize in creating interactive, scenario-based eLearning experiences that combine storytelling with technology. 
-        My work empowers learners and helps teams achieve their goals effectively.
+        Scenario-based, interactive, and built to last. I create eLearning experiences that combine 
+        genuine storytelling with technical depth — SCORM-compliant, LMS-ready, and designed for 
+        global audiences. From rapid AI-assisted development to custom SCORM packages, 
+        I work at the intersection of pedagogy and production.
       </p>
+      <div class="tags">
+        <span class="tag">Scenario-Based Learning</span>
+        <span class="tag">SCORM / xAPI</span>
+        <span class="tag">LMS Architecture</span>
+        <span class="tag">Global Audiences</span>
+        <span class="tag">Localization</span>
+      </div>
     </div>
   </div>
 
+  <!-- CONTACT -->
   <div id="contact" class="section">
-    <video src="../contact-background.mp4" autoplay muted loop playsinline poster></video>
+    <video src="../contact-background.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
     <div class="content">
-      <h2>Contact</h2>
+      <span class="content-label">Contact</span>
+      <h2>Let's build something worth learning.</h2>
       <p>
-        Let's connect! Email me at <a href="mailto:jhphillips@example.com">jhphillips@example.com</a> or visit my 
-        <a href="https://linktr.ee/jhphillips" target="_blank">Linktree</a>.
+        Connect with me on <a href="https://www.linkedin.com/in/jody-phillips" target="_blank" rel="noopener">LinkedIn</a>.
       </p>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Jody H. Phillips. Built with passion and creativity.</p>
-    <p><a href="#top">Back to top</a></p>
+    <div class="footer-divider"></div>
+    <p>&copy; 2025 Jody H. Phillips &nbsp;·&nbsp; <a href="#about">Back to top</a></p>
   </footer>
-</body>
-</html>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Respect reduced motion — pause all videos
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('autoplay'); });
+    }
+
+    // Scroll fade-in for content cards
+    document.body.classList.add('js-ready');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersect
