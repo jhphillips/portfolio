@@ -3,378 +3,703 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jody H. Phillips</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>Jody H. Phillips — Learning Experience Development Manager</title>
+  <meta name="description" content="Learning leader with 20+ years building technical training, AI-powered workflows, and scalable eLearning solutions at Chubb.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --teal-dark:  #0891b2;
-      --teal-light: #06b6d4;
-      --teal-pale:  #e0f7fa;
-      --slate:      #1e293b;
-      --slate-mid:  #334155;
-      --slate-light:#64748b;
-      --white:      #ffffff;
-      --off-white:  #f8fafc;
-      --border:     #e2e8f0;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1b2d;
+      --navy-light: #1a2a42;
+      --slate: #334155;
+      --gray: #64748b;
+      --light: #f1f5f9;
+      --white: #ffffff;
+      --accent: #3b82f6;
+      --accent-soft: #dbeafe;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --warm: #f59e0b;
+    }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--off-white);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--slate);
-      overflow-x: hidden;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(135deg, var(--slate) 0%, var(--slate-mid) 100%);
-      color: var(--white);
-      padding: 80px 40px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(8,145,178,0.25) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.15) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal-dark), var(--teal-light), var(--teal-dark));
-    }
-
-    .header-inner { position: relative; z-index: 1; }
-
-    header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-    }
-
-    header h1 span {
-      color: var(--teal-light);
-    }
-
-    .header-tag {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* ── NAV ── */
-    nav {
+      line-height: 1.7;
       background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 100;
+      background: rgba(15, 27, 45, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
-      justify-content: center;
-      gap: 0;
-      box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
     }
 
     nav a {
-      display: inline-block;
-      padding: 18px 28px;
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      color: var(--slate-light);
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 500;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
+      transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: var(--teal-dark);
-      border-bottom-color: var(--teal-dark);
-    }
+    nav a:hover { color: var(--white); }
 
-    /* ── SECTIONS ── */
-    .section {
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #1e3a5f 100%);
+      color: var(--white);
+      padding: 10rem 2rem 6rem;
       position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
 
-    .section video {
+    .hero::before {
+      content: '';
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .section-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(8,100,140,0.88) 100%);
-      z-index: 1;
-    }
-
-    .content {
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
       position: relative;
-      z-index: 2;
-      max-width: 760px;
-      width: 90%;
-      padding: 48px;
-      background: rgba(15,23,42,0.72);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 16px;
-      color: var(--white);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
     }
 
-    /* alternating alignment */
-    .section:nth-child(even) { justify-content: flex-end; padding-right: 6vw; }
-    .section:nth-child(odd)  { justify-content: flex-start; padding-left: 6vw; }
-
-    .content-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--teal-light);
-      border: 1px solid rgba(6,182,212,0.4);
-      border-radius: 999px;
-      padding: 4px 14px;
-      margin-bottom: 20px;
-    }
-
-    .content h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
       line-height: 1.15;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
 
-    .content p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.95);
+    .hero .tagline {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.5rem;
+      max-width: 640px;
     }
 
-    .content strong { color: var(--teal-light); font-weight: 600; }
-
-    .content a {
-      color: var(--teal-light);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(6,182,212,0.4);
-      transition: border-color 0.2s;
+    .hero .location {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
     }
-    .content a:hover { border-bottom-color: var(--teal-light); }
 
-    /* ── PILL TAGS ── */
-    .tags {
+    .hero-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
+      gap: 0.6rem;
     }
 
-    .tag {
-      font-size: 0.78rem;
+    .hero-pills span {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
       font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 999px;
-      background: #065a6e;
-      border: 1px solid #0891b2;
-      color: #bef0fb;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.02em;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--slate);
-      color: rgba(255,255,255,0.6);
+    /* ── Section base ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── About ── */
+    .about { background: var(--white); }
+
+    .about p {
+      font-size: 1.1rem;
+      max-width: 780px;
+      color: var(--slate);
+      line-height: 1.85;
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      background: var(--light);
+      padding: 3rem 2rem;
+    }
+
+    .stats-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
       text-align: center;
-      padding: 48px 20px;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    /* ── Experience ── */
+    .experience { background: var(--white); }
+
+    .exp-company {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .exp-company h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+    }
+
+    .exp-company span {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .timeline { position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-soft));
+    }
+
+    .timeline-item {
+      padding-left: 2.5rem;
+      padding-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--accent);
+    }
+
+    .timeline-item.current::before {
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+
+    .timeline-dates {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-category {
+      margin-top: 2.5rem;
+    }
+
+    .exp-category h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--accent-soft);
+    }
+
+    .exp-highlights {
+      list-style: none;
+    }
+
+    .exp-highlights li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+
+    .exp-highlights li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .earlier-exp {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .earlier-exp h4 {
       font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
     }
 
-    footer a {
-      color: var(--teal-light);
+    .earlier-item {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--slate);
+    }
+
+    .earlier-item strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ── Skills ── */
+    .skills { background: var(--light); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .skill-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tags span {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    /* ── Education ── */
+    .education { background: var(--white); }
+
+    .edu-card {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .edu-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .edu-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ── Contact ── */
+    .contact {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .contact .section-title { color: var(--white); }
+
+    .contact p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
       text-decoration: none;
-    }
-    footer a:hover { text-decoration: underline; }
-
-    .footer-divider {
-      width: 48px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--teal-dark), var(--teal-light));
-      margin: 0 auto 20px;
-      border-radius: 2px;
+      padding: 0.85rem 2.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    /* ── RESPONSIVE ── */
+    .contact-link:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Responsive ── */
     @media (max-width: 768px) {
-      .section:nth-child(even),
-      .section:nth-child(odd) {
-        justify-content: center;
-        padding: 0 20px;
-      }
-      .content { padding: 32px 24px; }
-      nav a { padding: 14px 14px; font-size: 0.75rem; }
-    }
-
-    /* ── REDUCED MOTION ── */
-    @media (prefers-reduced-motion: reduce) {
-      .content {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-      .section video {
-        display: none;
-      }
-      .section {
-        background: var(--slate);
-      }
-    }
-
-    /* ── SCROLL FADE IN ── */
-    .js-ready .content {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .js-ready .content.visible {
-      opacity: 1;
-      transform: translateY(0);
+      nav ul { display: none; }
+      .hero { padding: 8rem 1.5rem 4rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.5rem; }
+      .exp-company { flex-direction: column; gap: 0.25rem; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-inner">
-      <h1>Jody <span>H.</span> Phillips</h1>
-      <p class="header-tag">eLearning Innovator &nbsp;·&nbsp; Creative Technologist &nbsp;·&nbsp; Storyteller</p>
-    </div>
-  </header>
-
+  <!-- Navigation -->
   <nav>
-    <a href="#about">About</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#elearning">eLearning</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-inner">
+      <a href="#" class="logo">Jody H. Phillips</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- ABOUT -->
-  <div id="about" class="section">
-    <video src="GoGetItNow.mp4" autoplay muted loop playsinline></video>
-    <div class="section-overlay"></div>
-    <div class="content">
-      <span class="content-label">About Me</span>
-      <h2>Building learning — and better ways to build it.</h2>
-      <p>
-        I'm Jody H. Phillips, a creative technologist specializing in eLearning, storytelling, and multimedia. 
-        With 20+ years of experience, I blend instructional design expertise with hands-on front-end development 
-        to produce learning experiences that actually work — for global teams, at scale.
-      </p>
-      <div class="tags">
-        <span class="tag">Instructional Design</span>
-        <span class="tag">HTML / CSS / JS</span>
-        <span class="tag">SCORM 2004</span>
-        <span class="tag">AI-Assisted Workflows</span>
-        <span class="tag">Articulate Rise & Storyline</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Jody H. Phillips</h1>
+      <p class="tagline">Learning leader building AI-powered training solutions at scale for a global workforce of 45,000.</p>
+      <p class="location">Chicago, IL</p>
+      <div class="hero-pills">
+        <span>Learning Experience Development</span>
+        <span>Applied AI Builder</span>
+        <span>Tech Enablement Strategist</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years at Chubb</div>
+      </div>
+      <div>
+        <div class="stat-number">400</div>
+        <div class="stat-label">eLearning Modules / Year</div>
+      </div>
+      <div>
+        <div class="stat-number">45K</div>
+        <div class="stat-label">Employees Supported</div>
+      </div>
+      <div>
+        <div class="stat-number">15</div>
+        <div class="stat-label">Languages Localized</div>
       </div>
     </div>
   </div>
 
-  <!-- PORTFOLIO -->
-  <div id="portfolio" class="section">
-    <video src="BountyBlaster2.mp4" autoplay muted loop playsinline></video>
-    <div class="section-overlay"></div>
-    <div class="content">
-      <span class="content-label">Portfolio</span>
-      <h2>Where creativity meets technology.</h2>
-      <p>
-        Explore AI-driven projects like <strong>The Next Canvas</strong>, interactive scenario-based courses, 
-        dynamic multimedia content, and custom-built eLearning tools — all designed to captivate audiences 
-        and move the needle on real behavior change.
-      </p>
-      <div class="tags">
-        <span class="tag">AI-Driven Projects</span>
-        <span class="tag">Interactive Scenarios</span>
-        <span class="tag">Multimedia Content</span>
-        <span class="tag">Custom Interactions</span>
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Bridging Learning & Technology</h2>
+      <p>I lead a 7-person development team at Chubb producing hundreds of eLearning modules annually for underwriters and claims professionals worldwide. I bring hands-on fluency across AI tooling, multimedia production, and custom development &mdash; with the ability to conceive and execute end-to-end learning solutions that most teams have to outsource. My focus is translating emerging technology into practical workforce capability that drives adoption and measurable performance outcomes.</p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience" id="experience">
+    <div class="section-inner">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="exp-company">
+        <h3>Chubb</h3>
+        <span>2005 &ndash; Present</span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item current">
+          <div class="timeline-role">VP, Learning Experience Development Manager</div>
+          <div class="timeline-dates">2021 &ndash; Present</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">AVP, Learning Experience Development Manager</div>
+          <div class="timeline-dates">2016 &ndash; 2021</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Team Lead, Instructional Design</div>
+          <div class="timeline-dates">2012 &ndash; 2016</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Instructional Designer</div>
+          <div class="timeline-dates">2007 &ndash; 2012</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Training & Quality Support Specialist / Monoline CSR</div>
+          <div class="timeline-dates">2005 &ndash; 2007</div>
+        </div>
+      </div>
+
+      <div class="exp-category">
+        <h4>AI Enablement & Workflow Innovation</h4>
+        <ul class="exp-highlights">
+          <li>Architected and deployed Claude-powered AI workflows for eLearning production &mdash; including an XLF-based multilingual localization system that translated 12&ndash;14 Rise courses into 15 languages, reducing time-to-delivery for international content.</li>
+          <li>Built custom AI tools to address SCORM compliance issues, LMS platform alignment, and link migration &mdash; developing reusable frameworks that reduce manual effort on recurring technical challenges.</li>
+          <li>Piloted AI-assisted assessment development workflow producing 6 SCORM-compliant assessments (~20 questions each) in 8 hours &mdash; a process that traditionally requires 24&ndash;48 hours in Storyline &mdash; with repeatable builds now achievable in minutes.</li>
+          <li>Introduced LLM-assisted development methodology across the team, upskilling staff in HTML/CSS/JS eLearning development using AI co-creation.</li>
+          <li>Developed internal business cases and portfolio infrastructure to document AI workflow impact and support enterprise AI tool adoption.</li>
+        </ul>
+      </div>
+
+      <div class="exp-category">
+        <h4>Team Leadership & Talent Development</h4>
+        <ul class="exp-highlights">
+          <li>Managed, coached, and promoted an eLearning developer to AVP &mdash; building a succession pipeline while maintaining high team output through organizational transitions.</li>
+          <li>Hired and developed 4 of 7 current team members; promoted two into senior roles &mdash; effectively building the team's technical and design capability from the ground up.</li>
+          <li>Serve as technical lead and software champion for Chubb Global Learning &mdash; evaluating, advocating for, and onboarding tools including Articulate 360, Articulate AI, and Vyond.</li>
+          <li>Contribute to defining and refining the working model between instructional design and development functions within Chubb Global Learning.</li>
+        </ul>
+      </div>
+
+      <div class="exp-category">
+        <h4>Development Operations & Scale</h4>
+        <ul class="exp-highlights">
+          <li>Oversee production of 200&ndash;400 eLearning modules annually covering technical training for underwriters and claims adjusters across multiple lines of business.</li>
+          <li>Expanding agile development patterns enabling the team to execute select projects independently, increasing throughput and team autonomy.</li>
+          <li>Lead visual design and marketing for Chubb Global Learning &mdash; developing promotional materials and learning assets aligned with enterprise brand standards.</li>
+          <li>Championed the development of a podcast and live SME video production capability &mdash; now standardized and led by the AVP.</li>
+        </ul>
+      </div>
+
+      <div class="earlier-exp">
+        <h4>Earlier Experience</h4>
+        <div class="earlier-item"><strong>Team Lead / Call Coach</strong> &mdash; DHAC HealthyKids</div>
+        <div class="earlier-item"><strong>Customer Service Representative</strong> &mdash; Prudential, Oakbrook IL</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ELEARNING -->
-  <div id="elearning" class="section">
-    <video src="../elearning-background.mp4" autoplay muted loop playsinline></video>
-    <div class="section-overlay"></div>
-    <div class="content">
-      <span class="content-label">eLearning</span>
-      <h2>Learning that respects the learner.</h2>
-      <p>
-        Scenario-based, interactive, and built to last. I create eLearning experiences that combine 
-        genuine storytelling with technical depth — SCORM-compliant, LMS-ready, and designed for 
-        global audiences. From rapid AI-assisted development to custom SCORM packages, 
-        I work at the intersection of pedagogy and production.
-      </p>
-      <div class="tags">
-        <span class="tag">Scenario-Based Learning</span>
-        <span class="tag">SCORM / xAPI</span>
-        <span class="tag">LMS Architecture</span>
-        <span class="tag">Global Audiences</span>
-        <span class="tag">Localization</span>
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <div class="section-inner">
+      <div class="section-label">Toolkit</div>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>AI & Automation</h4>
+          <div class="skill-tags">
+            <span>Claude API</span>
+            <span>Claude Code</span>
+            <span>LLM Workflow Design</span>
+            <span>Prompt Engineering</span>
+            <span>Multi-Agent Architecture</span>
+            <span>AI-Native Content Dev</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Development</h4>
+          <div class="skill-tags">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Python</span>
+            <span>SCORM 2004</span>
+            <span>xAPI</span>
+            <span>XLF / XLIFF</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Multimedia Production</h4>
+          <div class="skill-tags">
+            <span>Premiere Pro</span>
+            <span>Photoshop</span>
+            <span>Illustrator</span>
+            <span>After Effects</span>
+            <span>Audition</span>
+            <span>Remotion</span>
+            <span>DAW Workflows</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Authoring & Platforms</h4>
+          <div class="skill-tags">
+            <span>Articulate Rise 360</span>
+            <span>Articulate Storyline</span>
+            <span>Oracle LMS</span>
+            <span>Suno AI</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Instructional Design</h4>
+          <div class="skill-tags">
+            <span>Gamification</span>
+            <span>Scenario-Based Learning</span>
+            <span>Adaptive Assessment</span>
+            <span>Microlearning</span>
+            <span>Multilingual Localization</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Leadership</h4>
+          <div class="skill-tags">
+            <span>Team Development</span>
+            <span>Change Management</span>
+            <span>Stakeholder Engagement</span>
+            <span>Talent Pipeline</span>
+            <span>Vendor Evaluation</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- CONTACT -->
-  <div id="contact" class="section">
-    <video src="../contact-background.mp4" autoplay muted loop playsinline></video>
-    <div class="section-overlay"></div>
-    <div class="content">
-      <span class="content-label">Contact</span>
-      <h2>Let's build something worth learning.</h2>
-      <p>
-        Connect with me on <a href="https://www.linkedin.com/in/jody-phillips" target="_blank" rel="noopener">LinkedIn</a>.
-      </p>
+  <!-- Education -->
+  <section class="education" id="education">
+    <div class="section-inner">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="edu-card">
+        <div>
+          <h3>BA, English &mdash; Creative Writing</h3>
+          <p>UIC &mdash; University of Illinois Chicago</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="section-label" style="color: rgba(255,255,255,0.5);">Get in Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p>Interested in AI-powered learning, workforce enablement, or just want to say hello?</p>
+      <a href="https://www.linkedin.com/in/jody-phillips-4611112a2/" class="contact-link" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </section>
 
   <footer>
-    <div class="footer-divider"></div>
-    <p>&copy; 2025 Jody H. Phillips &nbsp;·&nbsp; <a href="#about">Back to top</a></p>
+    &copy; 2026 Jody H. Phillips
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Respect reduced motion — pause all videos
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('autoplay'); });
-    }
-
-    // Scroll fade-in for content cards
-    document.body.classList.add('js-ready');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersect
+</body>
+</html>
